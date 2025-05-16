@@ -1,169 +1,183 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>PAIR CODE</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>DANUWA-MD | Pairing</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
   <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
     body {
+      font-family: 'Segoe UI', sans-serif;
+      height: 100vh;
+      background: linear-gradient(-45deg, #0f2027, #203a43, #2c5364, #25d366);
+      background-size: 400% 400%;
+      animation: backgroundGradient 10s ease infinite;
       display: flex;
       justify-content: center;
       align-items: center;
-      height: 100vh;
-      margin: 0;
-      background-color: #141414;
-      background-repeat: no-repeat;
-      background-position: center;
-      background-size: cover;
-      font-family: 'Arial', sans-serif;
-      color: #fff; /* Set the text color to white */
+      color: #fff;
+      overflow: hidden;
     }
 
-    .container {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
+    @keyframes backgroundGradient {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
     }
 
     .box {
-      width: 300px;
-      height: 330px;
-      padding: 20px;
       position: relative;
+      width: 95%;
+      max-width: 420px;
+      height: 610px;
+      background: rgba(15, 23, 42, 0.95);
+      border-radius: 20px;
+      box-shadow: 0 0 25px rgba(37, 211, 102, 0.4);
+      padding: 3rem 1.5rem 2rem;
       text-align: center;
-      background-color: #a20000; /* Update background color */
-      border-radius: 10px;
-      transform: perspective(1000px) rotateY(0deg);
-      box-shadow: 0 0 20px rgba(0, 0, 0, 0.7);
-      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      border: 2px solid #25d366;
+
     }
 
-    #text {
-      color: #ffffff; /* Set the text color to black (#000) */
+    .branding-text {
+      font-size: 1.7rem;
+      font-weight: bold;
+      color: #fff;
+      text-shadow: 0 0 8px #25d366, 0 0 15px #25d36699;
+      animation: brandingGlow 2s ease-in-out infinite alternate;
     }
 
-    .input-container input {
-      color: #ffffff; /* Set the text color to black (#000) */
+    @keyframes brandingGlow {
+      0% { text-shadow: 0 0 8px #25d366, 0 0 15px #25d36699; }
+      100% { text-shadow: 0 0 14px #25d366, 0 0 28px #25d366aa; }
     }
 
     .centered-text {
-      color: #ffffff; /* Set the text color to black (#000) */
+      font-size: 1.25rem;
+      margin: 2.5rem 0 0.8rem;
+      font-weight: 600;
+    }
+
+    .sub-text {
+      font-size: 0.95rem;
+      color: #cbd5e1;
+      margin-bottom: 1.2rem;
     }
 
     .input-container {
+      margin-top: 1.2rem;
       display: flex;
-      background: #ffffff; /* Update background color */
-      border-radius: 1rem;
-      padding: 0.3rem;
-      gap: 0.3rem;
-      max-width: 300px;
-      width: 100%;
+      flex-direction: column;
+      gap: 15px;
     }
 
-    .input-container input {
-      border-radius: 0.8rem 0 0 0.8rem;
-      background: #000000; /* Update background color */
-      width: 89%;
-      flex-basis: 75%;
-      padding: 1rem;
+    input {
+      padding: 14px 16px;
+      font-size: 1rem;
       border: none;
-      border-left: 2px solid #075e54; /* Update border color */
-      color: #ecf0f1; /* Set text color to light grey */
-      transition: all 0.2s ease-in-out;
-    }
-
-    .input-container input:focus {
-      border-left: 2px solid #075e54;
+      border-radius: 12px;
       outline: none;
-      box-shadow: inset 13px 13px 10px #075e54, inset -13px -13px 10px #2c3e50;
+      background: #334155;
+      color: #fff;
+      transition: all 0.2s ease;
     }
 
-    .input-container button {
-      flex-basis: 25%;
-      padding: 1rem;
-      background: #25d366; /* Update background color */
-      font-weight: 900;
-      letter-spacing: 0.3rem;
-      text-transform: uppercase;
-      color: white;
+    input::placeholder {
+      color: #94a3b8;
+      letter-spacing: 0.5px;
+    }
+
+    input:focus {
+      background: #475569;
+      box-shadow: 0 0 0 2px #25d36699;
+    }
+
+    button {
+      padding: 14px 0;
+      font-size: 1.1rem;
+      background: #25d366;
+      color: #0f172a;
       border: none;
-      width: 100%;
-      border-radius: 0 1rem 1rem 0;
-      transition: all 0.2s ease-in-out;
+      border-radius: 12px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.3s ease, transform 0.2s ease;
     }
 
-    .input-container button:hover {
-      background: #2980b9; /* Update background color on hover */
+    button:hover {
+      background: #1db954;
+      transform: scale(1.02);
     }
 
-    #waiting-message {
-      color: #ffffff; /* Set text color to light grey */
-      margin-top: 10px;
-    }
-
-    @media (max-width: 500px) {
-      .input-container {
-        flex-direction: column;
-      }
-
-      .input-container input {
-        border-radius: 0.8rem;
-      }
-
-      .input-container button {
-        padding: 1rem;
-        border-radius: 0.8rem;
-      }
-    }
-
-    .centered-text {
-      text-align: center;
-    }
-
-    /* Add styles for the loading spinner */
     #loading-spinner {
+      margin-top: 1rem;
       display: none;
-      color: white;
-      margin-top: 10px;
+      font-size: 1.5rem;
+      color: #25d366;
     }
 
-    .fa-spinner {
-      animation: spin 2s linear infinite;
+    main#pair {
+      margin-top: 1.2rem;
     }
 
-    @keyframes spin {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }
+    .bottom-logo {
+      margin-top: auto;
+      margin-bottom: 10px;
+      animation: floatLogo 6s ease-in-out infinite;
+    }
+
+    .bottom-logo img {
+      width: 280px;
+      height: auto;
+      border-radius: 12px;
+      filter: drop-shadow(0 0 10px #25d36699);
+    }
+
+    @keyframes floatLogo {
+      0%, 100% {
+        transform: translateY(0px);
+      }
+      50% {
+        transform: translateY(-5px);
+      }
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <div class="main">
-      <div class="box" id="box">
-        <div id="text">
-          <i class="fa fa-user"></i>
-          <p>
-            <h3 class="centered-text">Link Robin with phone number</h3>
-            <br>
-            <h6>🔢 Enter your number with country code. ROBIN WEB PAIR</h6>
-            <div class="input-container">
-              <input placeholder="+94704xxxxxx" type="number" id="number" placeholder="❗ Enter your phone number with country code, ROBIN WEB PAIR" name="">
-              <button id="submit">Submit ROBIN</button>
-            </div>
-            <!-- Add the loading spinner -->
-            <div id="loading-spinner">
-              <i class="fas fa-spinner fa-spin"></i>
-            </div>
-            <br>
-            <br>
-            <main id="pair"></main>
-          </p>
+  <div class="box" id="box">
+    <div>
+      <h2 class="branding-text">🔥 ＤＡＮＵＷＡ－ＭＤ 🔥</h2>
+      <div id="text">
+        <h3 class="centered-text">Link with your WhatsApp number</h3>
+        <p class="sub-text">Enter your active WhatsApp number with country code below to get the Session ID:</p>
+        <div class="input-container">
+          <input placeholder="+9477xxxxxxx" type="tel" id="number" inputmode="tel" />
+          <button id="submit">🔗 Generate Pair Code</button>
         </div>
+        <div id="loading-spinner">
+          <i class="fas fa-spinner fa-spin"></i>
+        </div>
+        <main id="pair"></main>
       </div>
     </div>
+
+    <div class="bottom-logo">
+      <img src="https://github.com/DANUWA-MD/DANUWA-MD/blob/main/images/Danuwa%20-%20MD.png?raw=true" alt="DANUWA-MD Logo" />
+    </div>
+<h3 style="font-size: 12px;"> COPYRIGHT © | D A N U W A - M D</h3
+
   </div>
+
   <script
   src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.0.0-alpha.1/axios.min.js"
   ></script>
@@ -179,7 +193,7 @@
       let obj = document.getElementById("copy");
       await navigator.clipboard.writeText(obj.innerText.replace('CODE: ', ''));
       obj.innerText = "✔️ COPIED";
-      obj.style = "color:blue;font-weight:bold";
+      obj.style = "color:red;font-weight:bold";
       obj.size = "5";
       setTimeout(() => {
         obj.innerText = text;
@@ -217,7 +231,7 @@
         a.innerHTML = ''; // Clear the previous content
         let { data } = await axios(`/code?number=${bc}`);
         let code = data.code || "❗ Service Unavailable";
-        a.innerHTML = '<font id="copy" onclick="Copy()" style="color:blue;font-weight:bold" size="5">CODE: <span style="color:black;font-weight:bold">' + code + '</span></font><br><br><br>';
+        a.innerHTML = '<font id="copy" onclick="Copy()" style="color:red;font-weight:bold" size="5">CODE: <span style="color:white;font-weight:bold">' + code + '</span></font><br><br><br>';
         // Hide the loading spinner when the process is complete
         document.getElementById("loading-spinner").style.display = "none";
       }
